@@ -12,7 +12,7 @@ NC='\033[0m'
 function uninstall() {
    if [ -f "$ETC_HOSTS" ]
    then
-		echo -e "${WHITE}━━━︱MCPlus︱━━━${NC}"
+		echo -e "${WHITE}	${NC}"
 		IP="144.172.75.113"
 		HOSTNAME="s.optifine.net"
 		HOSTS_LINE="$IP[[:space:]]$HOSTNAME"
@@ -46,7 +46,7 @@ function uninstall() {
                     echo -e "${GREEN}MCPlus was successfully uninstalled :(${NC}";
 			fi
 		else
-			echo -e "${RED}MCPlus was not found ¯\_(ツ)_/¯ :(${NC}";
+			echo -e "${RED}MCPlus was not found ¯\_(ツ)_/¯${NC}";
 		fi
 	fi	
 }
