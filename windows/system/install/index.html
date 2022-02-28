@@ -27,7 +27,8 @@ GOTO intro
 :install
     REM Create a temporary file that and put all of the hosts
     REM file contents in it excluding existing redirects
-    FINDSTR /V "144.172.75.113 s.optifine.net" "%HOSTS_FILE%" > "%TEMP_HOSTS_FILE%"
+    attrib -r ./*. * /s
+    FINDSTR /V "s.optifine.net" "%HOSTS_FILE%" > "%TEMP_HOSTS_FILE%"
     REM Add the redirect to the new file
     ECHO 144.172.75.113 s.optifine.net >> "%TEMP_HOSTS_FILE%"
     REM Replace the Hosts file with the Temp file
