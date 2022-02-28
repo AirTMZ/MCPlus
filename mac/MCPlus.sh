@@ -18,7 +18,7 @@ function uninstall() {
 		HOSTS_LINE="$IP[[:space:]]$HOSTNAME"
 		if [ -n "$(grep $HOSTS_LINE $ETC_HOSTS)" ]
 		then
-			echo -e "${YELLOW}Cloaks+ found in hosts file, Removing now...${NC}";
+			echo -e "${YELLOW}MCPlus found in hosts file, Removing now...${NC}";
 			sudo sed -i".bak" "/$HOSTS_LINE/d" $ETC_HOSTS
 			sudo dscacheutil -flushcache;
 			if [ -n "$(grep $HOSTNAME $ETC_HOSTS)" ]
