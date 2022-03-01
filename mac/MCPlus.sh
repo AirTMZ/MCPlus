@@ -12,8 +12,8 @@ NC='\033[0m'
 function uninstall() {
    if [ -f "$ETC_HOSTS" ]
    then
-		echo -e "${WHITE}	${NC}"
-		IP="144.172.75.113"
+		echo -e "${BLUE}======= MCPlus Installer =======${NC}"
+		IP=""
 		HOSTNAME="s.optifine.net"
 		HOSTS_LINE="$IP[[:space:]]$HOSTNAME"
 		if [ -n "$(grep $HOSTS_LINE $ETC_HOSTS)" ]
@@ -23,37 +23,37 @@ function uninstall() {
 			sudo dscacheutil -flushcache;
 			if [ -n "$(grep $HOSTNAME $ETC_HOSTS)" ]
                 then
-                    echo -e "${RED}Something went wrong when uninstalling MCPlus, Try again.${NC}";
+                    echo -e "${RED}Failed to uninstall MCPlus, Try again.${NC}";
                 else
-                    echo -e "${GREEN}MCPlus was successfully uninstalled :(${NC}";
+                    echo -e "${GREEN}MCPlus successfully uninstalled!${NC}";
 			fi
 		else
 			echo -e "${RED}MCPlus was not found in your $ETC_HOSTS file.${NC}";
 		fi
    else
-		IP="144.172.75.113"
+		IP=""
 		HOSTNAME="s.optifine.net"
 		HOSTS_LINE="$IP[[:space:]]$HOSTNAME"
 		if [ -n "$(grep $HOSTS_LINE $OLD_OSX)" ]
 		then
-			echo -e "${YELLOW}MCPlus was found, Removing now...${NC}";
+			echo -e "${YELLOW}MCPlus found in hosts file, Removing now...${NC}";
 			sudo sed -i".bak" "/$HOSTS_LINE/d" $OLD_OSX
 			sudo dscacheutil -flushcache;
 			if [ -n "$(grep $HOSTNAME $OLD_OSX)" ]
                 then
-                    echo -e "${RED}Something went wrong when uninstalling MCPlus, Try again.${NC}";
+                    echo -e "${RED}Failed to uninstall MCPlus, Try again.${NC}";
                 else
-                    echo -e "${GREEN}MCPlus was successfully uninstalled :(${NC}";
+                    echo -e "${GREEN}MCPlus successfully uninstalled!${NC}";
 			fi
 		else
-			echo -e "${RED}MCPlus was not found ¯\_(ツ)_/¯${NC}";
+			echo -e "${RED}MCPlus was not found in your $OLD_OSX file.${NC}";
 		fi
 	fi	
 }
 
 function install() {
-	echo -e "${WHITE}━━━︱MCPlus︱━━━${NC}"
-    IP="144.172.75.113"
+	echo -e "${BLUE}======= MCPlus Installer =======${NC}"
+    IP=""
     HOSTNAME="s.optifine.net"
     HOSTS_LINE="$IP[[:space:]]$HOSTNAME"
     line_content=$( printf "%s\t%s\n" "$IP" "$HOSTNAME" )
@@ -61,9 +61,9 @@ function install() {
 	then
 		if [ -n "$(grep $HOSTS_LINE $ETC_HOSTS)" ]
         then
-            echo -e "${RED}MCPlus is already installed${NC}"
+            echo -e "${RED}MCPlus is already installed : ${YELLOW}$(grep $HOSTNAME $ETC_HOSTS)${NC}"
         else
-            echo -e "${YELLOW}Installing MCPlus${NC}";
+            echo -e "${YELLOW}Installing MCPlus...${NC}";
 			sudo sed -i".bak" "/$HOSTNAME/d" $ETC_HOSTS;
             sudo -- sh -c -e "echo '$line_content' >> /etc/hosts";
 			sudo dscacheutil -flushcache;
@@ -76,23 +76,23 @@ function install() {
             fi
 		fi
 	else
-		IP="144.172.75.113"
+		IP=""
 		HOSTNAME="s.optifine.net"
 		HOSTS_LINE="$IP[[:space:]]$HOSTNAME"
 		line_content=$( printf "%s\t%s\n" "$IP" "$HOSTNAME" )
 		if [ -n "$(grep $HOSTS_LINE $OLD_OSX)" ]
         then
-            echo -e "${RED}MCPlus is already installed${NC}"
+            echo -e "${RED}MCPlus is already installed : ${YELLOW}$(grep $HOSTNAME $OLD_OSX)${NC}"
         else
             echo "Installing MCPlus...";
-			echo -e "${YELLOW}Installing MCPlus${NC}";
+			echo -e "${YELLOW}Installing MCPlus...${NC}";
 			sudo sed -i".bak" "/$HOSTNAME/d" $OLD_OSX;
             sudo -- sh -c -e "echo '$line_content' >> /private/etc/hosts";
 			sudo dscacheutil -flushcache;
 
             if [ -n "$(grep $HOSTNAME $OLD_OSX)" ]
                 then
-                    echo -e "${GREEN}MCPlus was installed succesfully :)${NC}";
+                    echo -e "${GREEN}MCPlus was installed succesfully!${NC}";
                 else
                     echo -e "${RED}Failed to install MCPlus, Try again.${NC}";
             fi
@@ -102,7 +102,7 @@ function install() {
 
 if [ $# -eq 0 ]
   then
-    echo -e "${WHITE}━━━︱MCPlus︱━━━${NC}"
+    echo -e "${BLUE}======= MCPlus Installer =======${NC}"
     echo -e "${RED}Please supply an argument and try again.${NC}"
 fi
 
