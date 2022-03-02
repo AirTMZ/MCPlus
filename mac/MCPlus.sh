@@ -12,7 +12,7 @@ NC='\033[0m'
 function uninstall() {
    if [ -f "$ETC_HOSTS" ]
    then
-		echo -e "${BLUE}━━━︱MCPlus Installer︱━━━${NC}"
+		echo -e "${BLUE}======= MCPlus Installer =======${NC}"
 		IP="144.172.75.113"
 		HOSTNAME="s.optifine.net"
 		HOSTS_LINE="$IP[[:space:]]$HOSTNAME"
@@ -52,7 +52,7 @@ function uninstall() {
 }
 
 function install() {
-	echo -e "${BLUE}━━━︱MCPlus Installer︱━━━${NC}"
+	echo -e "${BLUE}======= MCPlus Installer =======${NC}"
     IP="144.172.75.113"
     HOSTNAME="s.optifine.net"
     HOSTS_LINE="$IP[[:space:]]$HOSTNAME"
@@ -63,7 +63,7 @@ function install() {
         then
             echo -e "${RED}MCPlus is already installed : ${YELLOW}$(grep $HOSTNAME $ETC_HOSTS)${NC}"
         else
-            echo -e "${YELLOW}Installing MCPlus...${NC}";
+            echo -e "${YELLOW}Installing MCPlus ...${NC}";
 			sudo sed -i".bak" "/$HOSTNAME/d" $ETC_HOSTS;
             sudo -- sh -c -e "echo '$line_content' >> /etc/hosts";
 			sudo dscacheutil -flushcache;
@@ -102,7 +102,7 @@ function install() {
 
 if [ $# -eq 0 ]
   then
-    echo -e "${BLUE}━━━︱MCPlus Installer︱━━━${NC}"
+    echo -e "${BLUE}======= MCPlus Installer =======${NC}"
     echo -e "${RED}Please supply an argument and try again.${NC}"
 fi
 
