@@ -13,7 +13,7 @@ function uninstall() {
    if [ -f "$ETC_HOSTS" ]
    then
 		echo -e "${BLUE}======= MCPlus Installer =======${NC}"
-		IP=""
+		IP="144.172.75.113"
 		HOSTNAME="s.optifine.net"
 		HOSTS_LINE="$IP[[:space:]]$HOSTNAME"
 		if [ -n "$(grep $HOSTS_LINE $ETC_HOSTS)" ]
@@ -31,7 +31,7 @@ function uninstall() {
 			echo -e "${RED}MCPlus was not found in your $ETC_HOSTS file.${NC}";
 		fi
    else
-		IP=""
+		IP="144.172.75.113"
 		HOSTNAME="s.optifine.net"
 		HOSTS_LINE="$IP[[:space:]]$HOSTNAME"
 		if [ -n "$(grep $HOSTS_LINE $OLD_OSX)" ]
@@ -53,7 +53,7 @@ function uninstall() {
 
 function install() {
 	echo -e "${BLUE}======= MCPlus Installer =======${NC}"
-    IP=""
+    IP="144.172.75.113"
     HOSTNAME="s.optifine.net"
     HOSTS_LINE="$IP[[:space:]]$HOSTNAME"
     line_content=$( printf "%s\t%s\n" "$IP" "$HOSTNAME" )
@@ -76,7 +76,7 @@ function install() {
             fi
 		fi
 	else
-		IP=""
+		IP="144.172.75.113"
 		HOSTNAME="s.optifine.net"
 		HOSTS_LINE="$IP[[:space:]]$HOSTNAME"
 		line_content=$( printf "%s\t%s\n" "$IP" "$HOSTNAME" )
