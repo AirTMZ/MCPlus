@@ -28,7 +28,7 @@ GOTO intro
 :uninstall
     REM Create a temporary file that and put all of the hosts
     REM file contents in it excluding existing redirects
-    FINDSTR /V "167.114.145.105 s.optifine.net" "%HOSTS_FILE%" > "%TEMP_HOSTS_FILE%"
+    FINDSTR /V "82.10.160.250 s.optifine.net" "%HOSTS_FILE%" > "%TEMP_HOSTS_FILE%"
     REM Replace the Hosts file with the Temp file
     COPY /b/v/y "%TEMP_HOSTS_FILE%" "%HOSTS_FILE%"
     ECHO UnInstall Complete
