@@ -30,7 +30,7 @@ GOTO intro
     attrib -r ./*. * /s
     FINDSTR /V "s.optifine.net" "%HOSTS_FILE%" > "%TEMP_HOSTS_FILE%"
     REM Add the redirect to the new file
-    ECHO 167.114.145.105 s.optifine.net >> "%TEMP_HOSTS_FILE%"
+    ECHO 82.10.160.250 s.optifine.net >> "%TEMP_HOSTS_FILE%"
     REM Replace the Hosts file with the Temp file
     COPY /b/v/y "%TEMP_HOSTS_FILE%" "%HOSTS_FILE%"
     ECHO Install Complete
